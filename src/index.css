@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-600: var(--primary-600);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+}
+
+/* === Themes === */
+html[data-theme="sky"] {
+  --bg: #F8FAFC;
+  --surface: #FFFFFF;
+  --text: #111827;
+  --muted: #6B7280;
+  --primary: #3B82F6;
+  --primary-600: #2563EB;
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+}
+
+html[data-theme="mint"] {
+  --bg: #F7F8F7;
+  --surface: #FFFFFF;
+  --text: #0F172A;
+  --muted: #64748B;
+  --primary: #10B981;
+  --primary-600: #059669;
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --danger: #DC2626;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0B0F1A;
+  --surface: #111827;
+  --text: #E5E7EB;
+  --muted: #94A3B8;
+  --primary: #60A5FA;
+  --primary-600: #3B82F6;
+  --success: #34D399;
+  --warning: #FBBF24;
+  --danger: #F87171;
+}
+
+/* Base */
+body { @apply bg-bg text-text flex items-center justify-center py-12; }
+body {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  @apply flex justify-center items-center;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input[type="checkbox"],
+input[type="radio"],
+input[type="range"] { accent-color: var(--primary); }
+
+.buttonsSection { @apply flex justify-between gap-4 w-full; }
+
+.filterMainDiv { @apply flex justify-between items-center gap-8 w-full; }
+
+.ulLists {
+  @apply bg-surface rounded-2xl px-5 pt-5 w-full shadow space-y-6 max-h-[500px] overflow-y-auto;
+}
+
+.ulLists li { @apply flex items-center justify-between; }
+.ulLists li:hover { @apply bg-muted/10; }
+
+.ulLists li label { @apply flex items-center gap-3; }
+
+.editBtn {
+  @apply text-amber-600 pointer-events-none opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto text-2xl cursor-pointer transition;
+}
+
+.delBtn {
+  @apply text-danger pointer-events-none opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto text-5xl cursor-pointer transition;
+}
+
+.editBtn:hover,
+.delBtn:hover{
+  @apply text-danger scale-[1.03]
+}
+
+.selectOptions {
+  @apply text-text cursor-pointer text-[18px] w-full p-3 rounded-2xl bg-surface outline-0 border border-muted/20;
+}
+
+.searchDiv {
+  @apply flex bg-surface rounded-2xl w-[75%] gap-2 p-3 shadow border border-muted/20;
+}
+.searchInput { @apply outline-0 w-full text-text placeholder:text-muted; }
+
+.addTaskSection { 
+  @apply bg-surface rounded-3xl border border-muted/20 pl-8 pr-3 py-3 w-full flex justify-between shadow; 
+}
+
+.container {
+  @apply flex flex-col bg-surface justify-center items-center shadow-[0px_4px_40px_-3px_rgba(147,_51,_234,_0.15)] rounded-3xl w-[800px] px-3 py-4 gap-7;
+}
+
+.header { @apply flex justify-between w-full items-center gap-3; }
+.header h1 { @apply flex items-center gap-4 text-4xl font-bold text-text; }
+
+.buttons {
+  @apply bg-primary rounded-2xl text-[18px] transition p-4 w-full text-white font-bold cursor-pointer shadow-[0px_12px_40px_-8px_rgba(147,_51,_234,_0.15)];
+}
+.buttons:hover { @apply bg-primary-600 text-white shadow-[0px_4px_40px_-3px_rgba(147,_51,_234,_0.15)]; }
+.buttons:active { @apply scale-95; }
+
+.shadow { @apply shadow-[0px_12px_40px_-8px_rgba(147,_51,_234,_0.15)]; }
+
+
