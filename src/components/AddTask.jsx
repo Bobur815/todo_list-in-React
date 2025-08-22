@@ -18,7 +18,7 @@ function AddTask({onAdd}) {
     return (
         <div className='addTaskSection'>
             <input type="text" value={task} onChange={(e) => setTask(e.target.value)} onKeyDown={enterKeyBtn} className='searchInput text-2xl' placeholder='Add new...' />
-            <button onClick={addBtn} disabled={!task.trim()} className='buttons max-w-[150px]  border  text-2xl'>+ Add</button>
+            <button onClick={addBtn} disabled={!task.trim()} className='buttons max-w-[150px]  text-2xl'>+ Add</button>
         </div>
     )
 }

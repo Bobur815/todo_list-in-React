@@ -80,11 +80,10 @@ function App() {
   }
 
   function handleSetAllCompleted() {
-    setItem(prev => prev.map(it => ({ ...it, completed: true })));
-  }
-
-  function handleSetAllActive(){
-    setItem(prev => prev.map(it => ({...it, completed:false})))
+    setItem(prev => {
+      const allCompleted = prev.length > 0 && prev.every(it => it.completed)
+      return prev.map(it => ({...it, completed: !allCompleted}))
+    });
   }
 
   function handleDelete(id) {
@@ -113,8 +112,13 @@ function App() {
     });
   }, [items, search, status]);
 
+  const allCompleted = items.length>0 && items.every(it => it.completed);
+  const label = allCompleted ? "Set All Active" : "Set All Completed";
+  const hasItems = items.length > 0;
+  const hasCompleted = items.length>0 && items.some(it => it.completed);
+
   return (
-    <div className='container'>
+    <div className='container motion-safe:animate-[hue_2s_linear_infinite]'>
       <div className="header">
         <h1>
           <img src={icon} alt="" /> My Todo List
@@ -130,10 +134,13 @@ function App() {
         onStatusChange={handleStatusChange}
       />
       <Lists items={filteredItems} onToggle={handleToggle} onDelete={handleDelete} onUpdate={handleUpdate} />
-      <Buttons setAllCompleted={handleSetAllCompleted} 
+      <Buttons 
+      label={label}
+      disabledBtn={!hasItems}
+      setAllCompleted={handleSetAllCompleted} 
       clearAllCompleted={handleClearAllCompleted} 
       clearAll={handleClearAll} 
-      setAllActive={handleSetAllActive}
+      hasCompleted={!hasCompleted}
       />
     </div>
   )
